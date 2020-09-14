@@ -1,0 +1,21 @@
+server:
+  port: 18000
+
+spring:
+  application:
+    name: spring-apollo-demo
+
+env: DEV
+
+app:
+  id: spring-apollo-demo
+apollo:
+  meta: http://localhost:19080
+  autoUpdateInjectedSpringProperties: true
+  accesskey:
+    secret: 2a81d2350e8b4a878acc084227bf47d7
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+    namespaces: application,data,dictionary

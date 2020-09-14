@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  apollo-configservice:
+    image: apolloconfig/apollo-configservice:1.7.1
+    container_name: apollo-configservice
+    hostname: apollo-configservice
+    depends_on:
+      - apollo-db
+    ports:
+      - "19080:8080"
+    links:
+      - apollo-db
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://apollo-db:3306/ApolloConfigDB?characterEncoding=utf8"
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MySQLDialect
+      EUREKA_INSTANCE_HOME_PAGE_URL: http://192.168.1.5:19080
+
+  apollo-adminservice:
+    image: apolloconfig/apollo-adminservice:1.7.1
+    container_name: apollo-adminservice
+    hostname: apollo-adminservice
+    depends_on:
+      - apollo-db
+    ports:
+      - "19090:8090"
+    links:
+      - apollo-db
+      - apollo-configservice
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://apollo-db:3306/ApolloConfigDB?characterEncoding=utf8"
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MySQLDialect
+      EUREKA_INSTANCE_HOME_PAGE_URL: http://192.168.1.5:19090
+
+  apollo-portal:
+    image: apolloconfig/apollo-portal:1.7.1
+    container_name: apollo-portal
+    depends_on:
+      - apollo-db
+    ports:
+      - "19070:8070"
+    links:
+      - apollo-db
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://apollo-db:3306/ApolloPortalDB?characterEncoding=utf8"
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MySQLDialect
+      APOLLO_PORTAL_ENVS: dev
+      DEV_META: "http://192.168.1.5:19080"
+
+  apollo-db:
+    image: mysql:5.7
+    container_name: apollo-db
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "19306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
