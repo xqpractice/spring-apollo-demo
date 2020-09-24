@@ -1,6 +1,6 @@
 package com.xqcao.practice.apollo.controller;
 
-import com.xqcao.practice.apollo.response.HelloResponse;
+import com.xqcao.practice.apollo.feign.FeignOriginClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/feign")
 public class FeignController {
+    private final FeignOriginClient originClient;
 
-    @GetMapping("/origin1")
-    public String getOriginOne() {
-        return "Origin One";
+    public FeignController(FeignOriginClient originClient) {
+        this.originClient = originClient;
     }
 
-    @GetMapping("/origin1")
-    public String getOriginOne() {
-        return "Origin One";
+    @GetMapping("/hello")
+    public String hello() {
+        return String.format("Feign message from origin: %s", originClient.hello());
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Feign test";
     }
 }
