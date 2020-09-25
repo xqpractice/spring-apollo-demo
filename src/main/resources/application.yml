@@ -18,4 +18,4 @@ apollo:
     enabled: true
     eagerLoad:
       enabled: true
-    namespaces: application,data,dictionary
+    namespaces: application,data,dictionary,db
