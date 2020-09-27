@@ -1,7 +1,6 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.db;
 
 import com.xqcao.practice.apollo.entity.User;
-import com.xqcao.practice.apollo.model.TestBean;
 import com.xqcao.practice.apollo.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;

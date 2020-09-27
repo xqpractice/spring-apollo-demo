@@ -1,4 +1,4 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.feign;
 
 import com.xqcao.practice.apollo.feign.FeignOriginClient;
 import lombok.extern.slf4j.Slf4j;

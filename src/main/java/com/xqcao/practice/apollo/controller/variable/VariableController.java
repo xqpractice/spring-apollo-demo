@@ -1,4 +1,4 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.variable;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

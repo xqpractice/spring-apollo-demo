@@ -1,4 +1,4 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.data;
 
 import com.xqcao.practice.apollo.model.TestBean;
 import lombok.extern.slf4j.Slf4j;

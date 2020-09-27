@@ -1,4 +1,4 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.dict;
 
 import com.xqcao.practice.apollo.config.DictionaryConfig;
 import lombok.extern.slf4j.Slf4j;

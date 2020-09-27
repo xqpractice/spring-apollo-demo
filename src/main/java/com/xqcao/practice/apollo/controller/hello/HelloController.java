@@ -1,4 +1,4 @@
-package com.xqcao.practice.apollo.controller;
+package com.xqcao.practice.apollo.controller.hello;
 
 import com.xqcao.practice.apollo.response.HelloResponse;
 import lombok.extern.slf4j.Slf4j;
